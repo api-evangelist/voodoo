@@ -1,0 +1,26 @@
+generated: '2026-09-04'
+method: searched
+status: none
+source: >-
+  Searched voodoo.io, the Publishing Platform console bundle, the VoodooTeam and VoodooADN GitHub
+  orgs, and the npm registry for an official hosted or stdio MCP server. Nothing was found.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+server: null
+tools: []
+notes:
+  - >-
+    No MCP server exists for Voodoo, hosted or local, first-party or community. No endpoint was
+    guessed or probed speculatively.
+  - >-
+    No candidate tool list was derived either, because there is no OpenAPI to derive one from:
+    Voodoo publishes no machine-readable contract for any surface. See
+    conventions/voodoo-conventions.yml and the x-coverage block in apis.yml.
+  - >-
+    Consequently no ToolCrosswalk artifact is emitted - a crosswalk requires an MCP or GraphQL
+    surface AND an OpenAPI, and Voodoo has neither.

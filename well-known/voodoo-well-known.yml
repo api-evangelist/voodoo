@@ -1,0 +1,127 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Anonymous HTTPS GETs on 2026-09-04 against every host this record knows: the registrable domain
+  and www, the Publishing Platform console host, the Publidash API baseURL host, the SDK binary
+  host, and the Maven repository host.
+hit_count: 0
+summary: >-
+  Voodoo serves no /.well-known discovery document on any host reachable from this record. No
+  security.txt, no OIDC or OAuth metadata, no api-catalog, no apis.json at any of its three
+  specified locations, no AAuth resource, no agent card. Every path below was requested by name and
+  every one missed. NO WellKnown, SecurityTxt or AgentCard pointer is emitted from this file: it
+  records an absence, not a surface.
+path_echo_control: passed
+soft_404_control:
+  voodoo.io: >-
+    404 on every probed path. Two distinct 404 bodies are served (a 10-byte "Not found" and the
+    305KB Framer HTML shell) but both carry HTTP 404, so neither is a false positive.
+  publishing-platform.voodoo.io: >-
+    FAILED - catch-all SPA. Every path, including the negative control
+    /.well-known/voodoo-negative-control-7f3ab91c.json, returns HTTP 200 with the identical
+    3,917-byte Vue application shell (<title>Voodoo publishing</title>). No 200 on this host is
+    treated as a document; all rows are recorded as soft-404.
+  apps-sdk.voodoo-tech.io: >-
+    S3-backed Maven host. Every path including the negative control returns HTTP 403 with the
+    111-byte AccessDenied XML body. Uniform denial, not a document surface.
+hosts:
+- host: https://voodoo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/apis.json, status: 404, file: null}
+  - {path: /.well-known/aauth-resource.json, status: 404, file: null}
+  - {path: /.well-known/ucp.json, status: 404, file: null}
+  - {path: /.well-known/acp.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+  - {path: /apis.json, status: 404, file: null}
+  - {path: /apis.yml, status: 404, file: null}
+  - {path: /llms.txt, status: 404, file: null}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 404, file: null, control: true}
+- host: https://www.voodoo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/apis.json, status: 404, file: null}
+  - {path: /.well-known/aauth-resource.json, status: 404, file: null}
+  - {path: /.well-known/ucp.json, status: 404, file: null}
+  - {path: /.well-known/acp.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+  - {path: /apis.json, status: 404, file: null}
+  - {path: /apis.yml, status: 404, file: null}
+  - {path: /llms.txt, status: 404, file: null}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 404, file: null, control: true}
+- host: https://v2-publidash-api.voodoo.io
+  note: >-
+    Fastify API. Unmatched routes answer HTTP 404 with a JSON body
+    {"message":"Route GET:<path> not found","error":"Not Found","statusCode":404}, so misses here
+    are unambiguous.
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/apis.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+  - {path: /apis.json, status: 404, file: null}
+  - {path: /llms.txt, status: 404, file: null}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 404, file: null, control: true}
+- host: https://publishing-platform.voodoo.io
+  note: >-
+    Catch-all SPA - see soft_404_control. Every 200 below is the same Vue shell, not a document, so
+    none is recorded with a file and none earns a pointer.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/openid-configuration, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/oauth-authorization-server, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/oauth-protected-resource, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/api-catalog, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/ai-plugin.json, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/agent-card.json, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/agent.json, status: 200, file: null, soft_404: true}
+  - {path: /apis.json, status: 200, file: null, soft_404: true}
+  - {path: /llms.txt, status: 200, file: null, soft_404: true}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 200, file: null, soft_404: true, control: true}
+- host: https://framework.voodoo-adn.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/apis.json, status: 404, file: null}
+  - {path: /.well-known/aauth-resource.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+  - {path: /apis.json, status: 404, file: null}
+  - {path: /llms.txt, status: 404, file: null}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 404, file: null, control: true}
+- host: https://apps-sdk.voodoo-tech.io
+  documents:
+  - {path: /.well-known/security.txt, status: 403, file: null}
+  - {path: /.well-known/openid-configuration, status: 403, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 403, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 403, file: null}
+  - {path: /.well-known/api-catalog, status: 403, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 403, file: null}
+  - {path: /.well-known/apis.json, status: 403, file: null}
+  - {path: /.well-known/aauth-resource.json, status: 403, file: null}
+  - {path: /.well-known/agent-card.json, status: 403, file: null}
+  - {path: /.well-known/agent.json, status: 403, file: null}
+  - {path: /apis.json, status: 403, file: null}
+  - {path: /llms.txt, status: 403, file: null}
+  - {path: /.well-known/voodoo-negative-control-7f3ab91c.json, status: 403, file: null, control: true}

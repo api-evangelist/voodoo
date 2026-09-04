@@ -1,23 +1,113 @@
 aid: voodoo
 name: Voodoo
-description: 'Voodoo is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Voodoo is a Paris-based mobile games and apps company founded in 2013 by Alexandre
+  Yazdi and Laurent Ritter. It develops and publishes free-to-play mobile titles (Paper.io, Hole.io,
+  Helix Jump, Mob Control), operates a partner publishing programme used by thousands of external
+  studios, runs an in-house mobile ad network (Voodoo ADN) and an advertising business selling
+  interstitial, rewarded and in-game inventory across roughly 150 million monthly active users, and
+  owns the social apps BeReal and Wizz. Its developer-facing surface is a partner platform rather than
+  a public API: the Publishing Platform (Publidash) dashboard, its auth-gated backend at
+  v2-publidash-api.voodoo.io, and first-party mobile ad SDKs distributed through CocoaPods, Swift
+  Package Manager and a Voodoo-hosted Maven repository.'
+image: https://framerusercontent.com/images/cKiSnoz2B6fJXIxssj9GA1gg.jpg
 url: https://raw.githubusercontent.com/api-evangelist/voodoo/refs/heads/main/apis.yml
-x-type: company
-x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-harvest:
+  type: company
+  source: harvest:secondary-market
+  secondary-market-listing: https://forgeglobal.com/voodoo_stock/
 specificationVersion: '0.20'
 created: '2026-09-04'
 modified: '2026-09-04'
 tags:
 - Company
-apis: []
+- Gaming
+- Mobile Games
+- Mobile Apps
+- Advertising
+- Ad Network
+- Game Publishing
+- Mobile SDK
+- Monetization
+- Social Apps
+apis:
+- aid: voodoo-publishing-platform
+  name: Voodoo Publishing Platform API
+  description: 'The HTTP backend behind Voodoo''s Publishing Platform (Publidash), the dashboard
+    partner studios use to submit prototypes, run tests, and read analytics, monetization and IAP
+    figures. The host is named directly in the public JavaScript bundle the platform serves. Every
+    route probed anonymously answers with a JSON envelope and HTTP 401
+    ("error.generic.forbiddenAccess" / "error.basicPublidash.forbiddenAccess"); Voodoo publishes no
+    OpenAPI, Swagger, GraphQL or reference documentation for it, and access is limited to signed-in
+    partner studios.'
+  humanURL: https://voodoo.io/publishing
+  baseURL: https://v2-publidash-api.voodoo.io
+  image: https://framerusercontent.com/images/cKiSnoz2B6fJXIxssj9GA1gg.jpg
+  tags:
+  - Publishing
+  - Analytics
+  - Game Publishing
+  x-access: partner-gated
+  x-contract: none-published
+  properties:
+  - type: SignUp
+    url: https://voodoo.io/signup/publishing
+  - type: Login
+    url: https://publishing-platform.voodoo.io/login
+  - type: TermsOfService
+    url: https://voodoo.io/terms-platform
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/voodoo-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/voodoo_stock/
+  url: https://voodoo.io/
+- type: DeveloperPortal
+  url: https://voodoo.io/publishing
+- type: Support
+  url: https://voodoo.io/support
+# HelpCenter probed 2026-09-04: HTTP 403 Cloudflare "Just a moment..." bot challenge, NOT dead.
+# The host is named in Voodoo's own production console bundle
+# (publishing-platform.voodoo.io/js/app.aba769b2.js), which deep-links articles such as
+# .../articles/12865445631772-TinySauce-Introduction, so the help center demonstrably exists;
+# only our crawler was turned away. Its content is not machine-readable from outside.
+- type: HelpCenter
+  url: https://voodoo.zendesk.com/hc/en-us
+- type: Blog
+  url: https://voodoo.io/news
+- type: GitHubOrganization
+  url: https://github.com/VoodooTeam
+- type: SignUp
+  url: https://voodoo.io/signup
+- type: TermsOfService
+  url: https://voodoo.io/terms
+- type: PrivacyPolicy
+  url: https://voodoo.io/privacy
+- type: Packages
+  url: packages/voodoo-packages.yml
+- type: SDKs
+  url: packages/voodoo-packages.yml
+- type: ChangeLog
+  url: changelog/voodoo-changelog.yml
+- type: Sandbox
+  url: sandbox/voodoo-sandbox.yml
+- type: Conformance
+  url: conformance/voodoo-conformance.yml
+- type: Lifecycle
+  url: lifecycle/voodoo-lifecycle.yml
+- type: Conventions
+  url: conventions/voodoo-conventions.yml
+- type: Plans
+  url: plans/voodoo-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/voodoo-rate-limits.yml
+- type: LLMsTxt
+  url: llms/voodoo-llms.txt
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v3

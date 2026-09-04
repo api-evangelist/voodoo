@@ -1,0 +1,27 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  https://voodoo.io/ads, https://voodoo.io/publishing, https://voodoo.io/signup/publishing and the
+  voodoo.io sitemap, read 2026-09-04.
+plan_count: 0
+plans: []
+note: >-
+  Voodoo publishes no pricing tiers, no rate card and no self-serve plans of any kind. Neither of
+  its two commercial surfaces is priced publicly. The advertising business (voodoo.io/ads) sells
+  media inventory, creative production and in-game integrations entirely through a sales contact -
+  the only call to action on the page is the address voodooads@voodoo.io - with programmatic supply
+  offered as managed service, PMPs and Preferred Deals, all negotiated. The publishing business
+  runs the opposite way round: Voodoo pays partner studios rather than charging them, so the
+  Publishing Platform has an application and a revenue-share agreement (voodoo.io/terms-platform)
+  rather than a price. A plan_count of 0 here is an accurate description of the business model,
+  not a gap in the search.
+commercial_surfaces:
+- name: Voodoo Ads
+  url: https://voodoo.io/ads
+  model: sales-contact
+  contact: voodooads@voodoo.io
+- name: Voodoo Publishing Platform
+  url: https://voodoo.io/publishing
+  model: revenue-share
+  terms: https://voodoo.io/terms-platform
+  signup: https://voodoo.io/signup/publishing

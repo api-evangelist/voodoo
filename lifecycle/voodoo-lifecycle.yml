@@ -1,0 +1,43 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  voodoo.io sitemap and site pages, the VoodooTeam / VoodooADN GitHub orgs, and anonymous probes of
+  status.voodoo.io, trust.voodoo.io and the Publidash API host on 2026-09-04.
+versioning:
+  scheme: semver
+  current: '3.17.1'
+  applies_to: Voodoo ADN iOS SDK
+  docs: https://github.com/VoodooADN/ios-sdk-swiftpackage/tags
+  note: >-
+    There is no published API versioning policy. The Publidash backend exposes /v1/ and /api/
+    route prefixes (both observed returning 401 anonymously) and its host name carries a v2
+    generation marker, but Voodoo documents neither. The only versioning Voodoo actually publishes
+    is SDK release versioning.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: >-
+    No deprecation or sunset policy is published. One concrete deprecation IS visible in the
+    repositories: github.com/VoodooTeam/voodoo-omsdk-podspecs carries a README reading "This
+    repository is not used anymore, please use https://github.com/VoodooADN/ios-cocoapods-specs",
+    and github.com/VoodooTeam/voodootune-release-notes has been an empty stub since 2021-09-07.
+    These are repository notices, not an API deprecation policy, so NO Deprecation pointer is
+    emitted.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_probe:
+  probes:
+  - {url: 'https://status.voodoo.io/', result: 'DNS did not resolve'}
+  - {url: 'https://trust.voodoo.io/', result: 'DNS did not resolve'}
+  note: >-
+    No status page exists on a Voodoo-controlled host and none is linked from voodoo.io,
+    voodoo.io/publishing or the Publishing Platform console. NO StatusPage pointer is emitted.
+deprecated_operations: []
+maintenance_signals:
+  - {surface: Voodoo ADN iOS SDK, last_release: '2026-08-11', assessment: active}
+  - {surface: Voodoo ADN MAX adapter, last_commit: '2026-09-01', assessment: active}
+  - {surface: APPS ad tools for Android, last_release: '2025-04-28', assessment: 'stale - 16 months'}
+  - {surface: '@voodoo.io npm scope', last_publish: '2025-09-18', assessment: 'one live package, four dormant since 2020-2022'}
+  - {surface: VoodooSauceCocoapods-Specs, assessment: 'legacy - contains MoPub-era pods; MoPub was shut down in 2021'}

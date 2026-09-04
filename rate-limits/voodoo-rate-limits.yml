@@ -1,0 +1,19 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Anonymous HTTP responses from https://v2-publidash-api.voodoo.io observed 2026-09-04, and a
+  search of every public Voodoo surface for a published limits page.
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+note: >-
+  Voodoo publishes no rate limits. No documentation page states one, and no anonymous response
+  from the Publidash API carried a RateLimit-*, X-RateLimit-* or Retry-After header on either a
+  401 (an existing route) or a 404 (Fastify not-found). No rate limiting was triggered during
+  probing, so no 429 behaviour could be observed either. Nothing about limits behind the auth wall
+  is publicly discoverable; limit_count 0 records an honest absence, not a measured zero ceiling.
+evidence:
+- {url: 'https://v2-publidash-api.voodoo.io/v1/openapi.json', status: 401, rate_limit_headers: none}
+- {url: 'https://v2-publidash-api.voodoo.io/api/openapi.json', status: 401, rate_limit_headers: none}
+- {url: 'https://v2-publidash-api.voodoo.io/', status: 404, rate_limit_headers: none}

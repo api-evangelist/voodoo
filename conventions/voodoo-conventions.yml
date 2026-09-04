@@ -1,0 +1,100 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Anonymous HTTP probes of https://v2-publidash-api.voodoo.io on 2026-09-04, plus the public
+  JavaScript bundle at https://publishing-platform.voodoo.io/js/app.aba769b2.js which names that
+  host, plus the first-party SDK READMEs in the VoodooTeam and VoodooADN GitHub orgs.
+scope_note: >-
+  Voodoo publishes no API reference, no OpenAPI and no developer documentation. Everything recorded
+  here is either observed on the wire from anonymous requests or read from a public SDK README.
+  Nothing is inferred about behaviour behind the auth wall. Fields that cannot be established from
+  the public surface are recorded as unknown rather than guessed.
+authentication:
+  style: unknown
+  observed: >-
+    Every route on v2-publidash-api.voodoo.io that exists returns HTTP 401 to an anonymous request.
+    No WWW-Authenticate header, no OAuth challenge, and no /.well-known/oauth-protected-resource
+    document is served, so the token type and how a client obtains one are not publicly
+    discoverable. The console at publishing-platform.voodoo.io presents a form login.
+  docs: null
+error_envelope:
+  format: bespoke-json
+  media_type: application/json; charset=utf-8
+  rfc9457: false
+  shape: '{"success": false, "reason": "<dotted.error.key>"}'
+  observed:
+  - {url: 'https://v2-publidash-api.voodoo.io/v1/openapi.json', status: 401, body: '{"success":false,"reason":"error.generic.forbiddenAccess"}'}
+  - {url: 'https://v2-publidash-api.voodoo.io/api/openapi.json', status: 401, body: '{"success":false,"reason":"error.basicPublidash.forbiddenAccess"}'}
+  not_found_shape: '{"message": "Route GET:<path> not found", "error": "Not Found", "statusCode": 404}'
+  framework_signal: >-
+    The 404 body is the Fastify default not-found envelope, so the API is a Fastify (Node.js)
+    service. The 401 envelope is Voodoo application code layered on top of it.
+  note: >-
+    Two observed status codes are not an error catalog. NO ErrorCatalog pointer is emitted from
+    this file - Voodoo publishes no error reference, and crediting one from two probed 401s would
+    assert a document that does not exist.
+routing:
+  prefixes_observed: [/v1, /api]
+  note: >-
+    Both prefixes exist (they answer 401 rather than the Fastify 404), so the surface is at least
+    two-generational. Voodoo documents neither.
+pagination:
+  style: unknown
+  note: Not publicly documented and not observable without credentials.
+idempotency:
+  coverage: none
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    No idempotency mechanism is documented on any public Voodoo surface - no Idempotency-Key
+    header, no request-id de-duplication contract, no OpenAPI parameter to read one from. Recorded
+    as none on the public evidence. NO Idempotency pointer is emitted.
+reversibility:
+  grade: unknown
+  reversal_operations: []
+  note: >-
+    Voodoo publishes no write-surface documentation, so no reversal operation and no reversal
+    window can be recorded. The Publidash console is known from the marketing page to cover
+    prototype submission, A/B test and remote-config management and IAP management - all of which
+    are mutating - but no operation, no undo path and no window is stated anywhere public.
+    Deliberately left unknown: asserting a window the docs do not state is the one error here that
+    could cost a user real money.
+dry_run_mode:
+  supported: unknown
+  note: >-
+    Not documented for the API. The ad SDKs do ship a test mode - see
+    sandbox/voodoo-sandbox.yml - but that is client-side ad testing, not an API dry run.
+versioning:
+  style: uri-path
+  observed: [/v1]
+  documented: false
+request_tracing:
+  header: Tracer-Id
+  documented: false
+  evidence: >-
+    Every response from v2-publidash-api.voodoo.io carries
+    "access-control-expose-headers: Is-Hijacked,Content-Disposition,Tracer-Id", so the API returns
+    a Tracer-Id correlation header and deliberately exposes it to browser clients. Consistent with
+    Voodoo's open-source Fastify tracing middleware (@voodoo.io/tracing-middleware, npm 3.0.1).
+    The header is real but undocumented - a client would have to read the CORS preflight to learn
+    it exists.
+  other_exposed_headers: [Is-Hijacked, Content-Disposition]
+cors:
+  access_control_allow_origin: '*'
+  access_control_allow_credentials: true
+  vary: Origin
+  note: >-
+    Observed on both 401 and 404 responses. A wildcard allow-origin returned alongside
+    allow-credentials:true is recorded as observed behaviour, not assessed here.
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header was returned on any anonymous response.
+    See rate-limits/voodoo-rate-limits.yml.
+cross_links:
+  rate_limits: rate-limits/voodoo-rate-limits.yml
+  lifecycle: lifecycle/voodoo-lifecycle.yml
+  sandbox: sandbox/voodoo-sandbox.yml
+  packages: packages/voodoo-packages.yml
+  well_known: well-known/voodoo-well-known.yml

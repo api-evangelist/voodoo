@@ -1,0 +1,175 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  GitHub orgs github.com/VoodooTeam and github.com/VoodooADN, the CocoaPods podspecs and Swift
+  Package Manager tags Voodoo publishes there, the Maven repository named in the
+  APPS-ad-tools-android README, and the npm registry search API for the @voodoo.io scope.
+notes:
+  - >-
+    Voodoo publishes no REST/HTTP client SDKs, because it publishes no public HTTP API. The
+    first-party libraries below are MOBILE AD SDKs (Voodoo ADN for iOS, io.voodoo.apps ad tools for
+    Android) plus a small set of open-source Node.js infrastructure utilities under the @voodoo.io
+    npm scope. Ownership is not inferred from the repo name: the VoodooAdn podspec declares
+    author "Voodoo.io", homepage https://www.voodoo.io and binaries hosted on
+    framework.voodoo-adn.com.
+  - >-
+    Voodoo does not publish these to the public CocoaPods trunk or to Maven Central. The iOS SDK is
+    distributed from Voodoo-operated podspec/SPM repositories on GitHub, and the Android artifacts
+    from a Voodoo-operated S3-backed Maven repository at apps-sdk.voodoo-tech.io, which returns
+    HTTP 403 to anonymous listing and metadata requests. Where no anonymous registry metadata
+    endpoint answers, version is recorded null with the reason.
+packages:
+- language: swift
+  registry: cocoapods
+  name: VoodooAdn
+  url: https://github.com/VoodooADN/ios-sdk-podspecs
+  install: "pod 'VoodooAdn'  # from the VoodooADN/ios-sdk-podspecs private specs repo"
+  official: true
+  version: 3.17.1
+  published: '2026-08-11'
+  note: >-
+    Voodoo Ad Network iOS SDK. Version read from
+    VoodooAdn/3.17.1/VoodooAdn.podspec in the specs repo; date from the commit that added it. The
+    podspec vendors VoodooAdn.xcframework from https://framework.voodoo-adn.com/iOS/sdk/3.17.1/
+    and depends on OMSDK_Voodooio 1.6.1 (IAB Open Measurement).
+- language: swift
+  registry: swift-package-manager
+  name: VoodooADN/ios-sdk-swiftpackage
+  url: https://github.com/VoodooADN/ios-sdk-swiftpackage
+  install: ".package(url: \"https://github.com/VoodooADN/ios-sdk-swiftpackage\", from: \"3.17.1\")"
+  official: true
+  version: 3.17.1
+  published: '2026-08-11'
+  note: Swift Package Manager distribution of the same Voodoo ADN iOS SDK; version from the v3.17.1 git tag.
+- language: swift
+  registry: cocoapods
+  name: VoodooMaxAdapter
+  url: https://github.com/VoodooADN/ios-applovin-adapter-podspecs
+  install: "pod 'VoodooMaxAdapter'"
+  official: true
+  version: 3.17.2.2
+  published: '2026-09-01'
+  note: >-
+    AppLovin MAX mediation adapter for Voodoo ADN. Version is the highest directory in the specs
+    repo; date is that repository's latest commit.
+- language: swift
+  registry: swift-package-manager
+  name: VoodooADN/ios-applovin-adapter-swiftpackage
+  url: https://github.com/VoodooADN/ios-applovin-adapter-swiftpackage
+  install: ".package(url: \"https://github.com/VoodooADN/ios-applovin-adapter-swiftpackage\", from: \"3.17.2\")"
+  official: true
+  version: null
+  published: null
+  note: >-
+    Swift Package Manager distribution of the MAX adapter. No tag list was read for this repo in
+    this pass; version left null rather than assumed from the sibling podspec repo.
+- language: swift
+  registry: cocoapods
+  name: VoodooISAdapter
+  url: https://github.com/VoodooADN/ios-levelplay-adapter-podspecs
+  install: "pod 'VoodooISAdapter'"
+  official: true
+  version: 4.2.3.16.5
+  published: null
+  note: >-
+    ironSource / Unity LevelPlay mediation adapter for Voodoo ADN. Version is the highest directory
+    in the specs repo; no dated release feed was available for it.
+- language: kotlin
+  registry: maven
+  name: io.voodoo.apps:ads-api
+  url: https://github.com/VoodooTeam/APPS-ad-tools-android
+  install: 'implementation("io.voodoo.apps:ads-api:<latest_version>")'
+  official: true
+  version: null
+  published: null
+  note: >-
+    Android ads abstraction layer. Hosted at https://apps-sdk.voodoo-tech.io/android/ (group
+    io.voodoo.apps), which returns HTTP 403 AccessDenied for
+    io/voodoo/apps/ads-api/maven-metadata.xml, so no version could be read from registry metadata.
+    The published sample and README pin no version ("<latest_version>"), which is itself the
+    finding: a consumer cannot tell from the docs what they are getting either. The repository's
+    own release feed last published v13.2.0.45 on 2025-04-28.
+- language: kotlin
+  registry: maven
+  name: io.voodoo.apps:ads-applovin
+  url: https://github.com/VoodooTeam/APPS-ad-tools-android
+  install: 'implementation("io.voodoo.apps:ads-applovin:<latest_version>")'
+  official: true
+  version: null
+  published: null
+  note: >-
+    AppLovin-backed implementation of ads-api. Same 403-gated Maven host; version unreadable
+    anonymously. Versioning scheme is documented in the README as the AppLovin SDK version plus a
+    Voodoo increment (e.g. AppLovin 12.5.0 -> 12.5.0.X).
+- language: kotlin
+  registry: maven
+  name: io.voodoo.apps:ads-compose
+  url: https://github.com/VoodooTeam/APPS-ad-tools-android
+  install: 'implementation("io.voodoo.apps:ads-compose:<latest_version>")'
+  official: true
+  version: null
+  published: null
+  note: Jetpack Compose helpers (LazyListAdMediator). Same 403-gated Maven host.
+- language: kotlin
+  registry: maven
+  name: io.voodoo.apps:privacy
+  url: https://github.com/VoodooTeam/APPS-ad-tools-android
+  install: 'implementation("io.voodoo.apps:privacy:<latest_version>")'
+  official: true
+  version: null
+  published: null
+  note: GDPR / consent-flow module. Same 403-gated Maven host.
+- language: javascript
+  registry: npm
+  name: "@voodoo.io/tracing-middleware"
+  url: https://www.npmjs.com/package/@voodoo.io/tracing-middleware
+  install: npm install @voodoo.io/tracing-middleware
+  official: true
+  version: 3.0.1
+  published: '2025-09-18'
+  note: >-
+    Open-source Node.js infrastructure utility published by Voodoo, not an API client. Version and
+    date from registry.npmjs.org.
+- language: javascript
+  registry: npm
+  name: "@voodoo.io/aws-utils"
+  url: https://www.npmjs.com/package/@voodoo.io/aws-utils
+  install: npm install @voodoo.io/aws-utils
+  official: true
+  version: 3.0.3
+  published: '2021-11-17'
+  note: Open-source Node.js utility. Last published 2021 - effectively dormant.
+- language: javascript
+  registry: npm
+  name: "@voodoo.io/reloader"
+  url: https://www.npmjs.com/package/@voodoo.io/reloader
+  install: npm install @voodoo.io/reloader
+  official: true
+  version: 1.0.9
+  published: '2022-12-27'
+  note: Open-source Node.js utility. Last published 2022 - effectively dormant.
+- language: javascript
+  registry: npm
+  name: "@voodoo.io/maxmind-reader"
+  url: https://www.npmjs.com/package/@voodoo.io/maxmind-reader
+  install: npm install @voodoo.io/maxmind-reader
+  official: true
+  version: 1.0.12
+  published: '2022-12-27'
+  note: Open-source Node.js utility. Last published 2022 - effectively dormant.
+- language: javascript
+  registry: npm
+  name: "@voodoo.io/fast-logger"
+  url: https://www.npmjs.com/package/@voodoo.io/fast-logger
+  install: npm install @voodoo.io/fast-logger
+  official: true
+  version: 0.0.4
+  published: '2020-02-17'
+  note: Open-source Node.js utility. Last published 2020 - effectively dormant.
+currency:
+  assessed: '2026-09-04'
+  summary: >-
+    The iOS ad SDK line is actively maintained (3.17.1 shipped 2026-08-11, the MAX adapter repo
+    committed 2026-09-01). The Android ad SDK line is 16 months stale (last release 2025-04-28,
+    last commit the same day). The @voodoo.io npm scope is one live package (2025-09-18) and four
+    dormant ones (2020-2022).

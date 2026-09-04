@@ -1,0 +1,61 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  The VoodooAdn CocoaPods podspec at
+  https://raw.githubusercontent.com/VoodooADN/ios-sdk-podspecs/main/VoodooAdn/3.17.1/VoodooAdn.podspec
+  and the APPS-ad-tools-android README at
+  https://raw.githubusercontent.com/VoodooTeam/APPS-ad-tools-android/main/README.md
+standards:
+- id: iab-open-measurement-sdk
+  name: IAB Tech Lab Open Measurement SDK (OM SDK)
+  conforms: true
+  domain_standard: true
+  evidence: >-
+    The VoodooAdn 3.17.1 podspec declares a hard dependency on OMSDK_Voodooio = 1.6.1, the
+    Voodoo-branded distribution of the IAB Tech Lab Open Measurement SDK. Voodoo also operates a
+    dedicated podspecs repository for it (github.com/VoodooTeam/voodoo-omsdk-podspecs, superseded by
+    github.com/VoodooADN/ios-cocoapods-specs). OM SDK is the standard viewability and verification
+    measurement interface for mobile in-app advertising; a buyer whose measurement vendor already
+    speaks OM SDK needs no bespoke integration with Voodoo ADN.
+  source: podspec dependency, VoodooAdn 3.17.1
+- id: gdpr-consent-flow
+  name: GDPR / consent collection before ad SDK initialization
+  conforms: true
+  evidence: >-
+    APPS-ad-tools-android ships a dedicated io.voodoo.apps:privacy artifact and its documented
+    integration order requires user consent to be collected in MainActivity BEFORE AdsInitializer
+    starts the AppLovin and AppHarbr SDKs. Voodoo publishes a privacy policy in 13 languages and a
+    separate cookie policy.
+  source: APPS-ad-tools-android README, privacy module
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No OAuth 2.0 surface is published. /.well-known/oauth-authorization-server and
+    /.well-known/oauth-protected-resource return 404 on voodoo.io, www.voodoo.io,
+    v2-publidash-api.voodoo.io and framework.voodoo-adn.com.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every Voodoo host probed.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    The Publidash API's observed error bodies are a bespoke envelope
+    {"success":false,"reason":"error.generic.forbiddenAccess"} served as application/json, not
+    application/problem+json.
+- id: openrtb
+  conforms: unknown
+  evidence: >-
+    Voodoo's ads page advertises programmatic gaming supply, PMPs and Preferred Deals, which in
+    practice implies OpenRTB. No OpenRTB endpoint, version, or bid-request schema is published on
+    any public Voodoo surface, so this is recorded as unverified rather than asserted.
+- id: vast
+  conforms: unknown
+  evidence: >-
+    Rewarded video and interstitial video inventory is sold, which normally implies IAB VAST. No
+    VAST version or tag specification is published publicly. Unverified.
+compliance:
+  published: false
+  note: >-
+    No trust center, certification page, or named certification (SOC 2, ISO 27001, PCI DSS, HIPAA,
+    FedRAMP) was found on voodoo.io or any trust./security. subdomain. probe-security-programs.py
+    returned trust=none. No Compliance pointer is emitted.

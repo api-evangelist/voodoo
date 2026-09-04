@@ -1,0 +1,49 @@
+generated: '2026-09-04'
+method: searched
+source: https://raw.githubusercontent.com/VoodooTeam/APPS-ad-tools-android/main/README.md
+scope: mobile-ad-sdk
+note: >-
+  Voodoo publishes no API sandbox, no test API keys and no test/live key separation, because it
+  publishes no public API. It does publish a real client-side test surface for its Android ad SDK,
+  captured verbatim below. Nothing here is invented; every value is quoted from Voodoo's own
+  README or the sample app it ships.
+test_vs_live:
+  model: device-allowlist
+  description: >-
+    There is no test-mode key. Test ads are enabled by registering the test device's Google
+    Advertising ID (GAID) with the mediation SDK at initialization.
+mechanisms:
+- name: Test device advertising IDs
+  how: >-
+    Add your GAID to the setTestDeviceAdvertisingIds call in AdsInitializer to enable test mode.
+  location: sample/src/main/java/io/voodoo/apps/ads/feature/ads/AdsInitiliazer.kt
+  source: APPS-ad-tools-android README, "Demo app" section
+- name: AppLovin mediation debugger
+  how: >-
+    Calling AppLovinSdk.getInstance(context.applicationContext).showMediationDebugger() launches
+    the mediation debugger to verify every network integration and to enable test mode for a
+    specific network.
+  verbatim: true
+  source: APPS-ad-tools-android README, "Integration steps" section
+- name: ads-no-op artifact
+  how: >-
+    io.voodoo.apps:ads-no-op is a dummy implementation of the ads-api contract that never returns
+    an ad, published so an app can be built without ads (for faster debug builds). It replaces the
+    ads-applovin module; note it provides no dummy MaxNativeAdClient or MREC implementation.
+  source: APPS-ad-tools-android README, "Artifacts" section
+- name: Sample application
+  how: >-
+    The repository ships a runnable sample module - an Instagram-style LazyColumn feed with native
+    and MREC ads inserted - covering consent capture, SDK initialization, the ad client
+    arbitrageur, ad tracking and the ad item composables.
+  url: https://github.com/VoodooTeam/APPS-ad-tools-android
+test_values: []
+test_values_note: >-
+  Voodoo publishes no magic test identifiers, test cards, test tokens or fixture values. The test
+  surface is device-allowlist and debugger based, not value based. No test values are recorded
+  because none are published; none were invented.
+time_simulation: null
+ios_note: >-
+  No equivalent published test-mode documentation was found for the Voodoo ADN iOS SDK. Its
+  README (github.com/VoodooTeam/voodooadn-swift-package) documents initialization and ad
+  loading/showing with completion-handler and async/await APIs, but no sandbox or test mode.
