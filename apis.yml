@@ -1,14 +1,13 @@
 aid: voodoo
 name: Voodoo
-description: 'Voodoo is a Paris-based mobile games and apps company founded in 2013 by Alexandre
-  Yazdi and Laurent Ritter. It develops and publishes free-to-play mobile titles (Paper.io, Hole.io,
-  Helix Jump, Mob Control), operates a partner publishing programme used by thousands of external
-  studios, runs an in-house mobile ad network (Voodoo ADN) and an advertising business selling
-  interstitial, rewarded and in-game inventory across roughly 150 million monthly active users, and
-  owns the social apps BeReal and Wizz. Its developer-facing surface is a partner platform rather than
-  a public API: the Publishing Platform (Publidash) dashboard, its auth-gated backend at
-  v2-publidash-api.voodoo.io, and first-party mobile ad SDKs distributed through CocoaPods, Swift
-  Package Manager and a Voodoo-hosted Maven repository.'
+description: 'Voodoo is a Paris-based mobile games and apps company founded in 2013 by Alexandre Yazdi
+  and Laurent Ritter. It develops and publishes free-to-play mobile titles (Paper.io, Hole.io, Helix Jump,
+  Mob Control), operates a partner publishing programme used by thousands of external studios, runs an
+  in-house mobile ad network (Voodoo ADN) and an advertising business selling interstitial, rewarded and
+  in-game inventory across roughly 150 million monthly active users, and owns the social apps BeReal and
+  Wizz. Its developer-facing surface is a partner platform rather than a public API: the Publishing Platform
+  (Publidash) dashboard, its auth-gated backend at v2-publidash-api.voodoo.io, and first-party mobile
+  ad SDKs distributed through CocoaPods, Swift Package Manager and a Voodoo-hosted Maven repository.'
 image: https://framerusercontent.com/images/cKiSnoz2B6fJXIxssj9GA1gg.jpg
 url: https://raw.githubusercontent.com/api-evangelist/voodoo/refs/heads/main/apis.yml
 x-harvest:
@@ -30,15 +29,14 @@ tags:
 - Monetization
 - Social Apps
 apis:
-- aid: voodoo-publishing-platform
+- aid: voodoo:voodoo-publishing-platform
   name: Voodoo Publishing Platform API
-  description: 'The HTTP backend behind Voodoo''s Publishing Platform (Publidash), the dashboard
-    partner studios use to submit prototypes, run tests, and read analytics, monetization and IAP
-    figures. The host is named directly in the public JavaScript bundle the platform serves. Every
-    route probed anonymously answers with a JSON envelope and HTTP 401
-    ("error.generic.forbiddenAccess" / "error.basicPublidash.forbiddenAccess"); Voodoo publishes no
-    OpenAPI, Swagger, GraphQL or reference documentation for it, and access is limited to signed-in
-    partner studios.'
+  description: The HTTP backend behind Voodoo's Publishing Platform (Publidash), the dashboard partner
+    studios use to submit prototypes, run tests, and read analytics, monetization and IAP figures. The
+    host is named directly in the public JavaScript bundle the platform serves. Every route probed anonymously
+    answers with a JSON envelope and HTTP 401 ("error.generic.forbiddenAccess" / "error.basicPublidash.forbiddenAccess");
+    Voodoo publishes no OpenAPI, Swagger, GraphQL or reference documentation for it, and access is limited
+    to signed-in partner studios.
   humanURL: https://voodoo.io/publishing
   baseURL: https://v2-publidash-api.voodoo.io
   image: https://framerusercontent.com/images/cKiSnoz2B6fJXIxssj9GA1gg.jpg
@@ -69,11 +67,6 @@ common:
   url: https://voodoo.io/publishing
 - type: Support
   url: https://voodoo.io/support
-# HelpCenter probed 2026-09-04: HTTP 403 Cloudflare "Just a moment..." bot challenge, NOT dead.
-# The host is named in Voodoo's own production console bundle
-# (publishing-platform.voodoo.io/js/app.aba769b2.js), which deep-links articles such as
-# .../articles/12865445631772-TinySauce-Introduction, so the help center demonstrably exists;
-# only our crawler was turned away. Its content is not machine-readable from outside.
 - type: HelpCenter
   url: https://voodoo.zendesk.com/hc/en-us
 - type: Blog
